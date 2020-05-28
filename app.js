@@ -110,7 +110,7 @@ app.get("/contacts/:id",function(req,res){
 
 
 
-app.listen(|5000/contacts,process.env.IP,function(){
+app.listen(process.env.Port||5000/contacts,process.env.IP,function(){
 	console.log("running on port 5000");
 });
 
