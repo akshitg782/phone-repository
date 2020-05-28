@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHONE BOOK</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+    
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/contacts">PHONE BOOK</a>
+            </div>
+        </div>
+</nav>
+        
+        
+        <div class="jumbotron ">
+  <div class="container">
+    <h1 >Welcome to Phone Book</h1>
+      <a class="btn btn-primary btn-large" href="/contacts/new">New Contact</a>  
+      
+    </div>
+</div>     
+     
+        
+        
+        
+        
+        
+      
+<div class="container">
+<% contacts.forEach(function(contacts){ %>
+         <div class="container" style="width: 27rem">
+             <div class="thumbnail">
+          <div class="container">
+          <b>     <%= contacts.name %></b> <br>
+           
+                <%= contacts.email %><br>
+         
+                <%= contacts.phone %><br>
+                 
+            <a href="/contacts/<%= contacts._id %>/edit" style="color: blue">EDIT</a>
+              
+             
+              <a href="/contacts/<%= contacts._id %>" style="color: red ">DELETE</a>
+
+                 </div>
+             </div>
+         </div>
+             
+ <%       });      %> 
+      </div>
