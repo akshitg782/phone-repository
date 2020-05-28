@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/contacts', {useNewUrlParser: true});
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:false}));
 app.set("view engine","ejs");
-schema.plugin(paginate);
+
 
 app.get("/contacts",function(req,res){
     
@@ -110,7 +110,7 @@ app.get("/contacts/:id",function(req,res){
 
 
 
-app.listen(process.env.Port||5000,process.env.IP,function(){
+app.listen(|5000/contacts,process.env.IP,function(){
 	console.log("running on port 5000");
 });
 
