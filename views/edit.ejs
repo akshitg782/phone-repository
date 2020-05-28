@@ -10,7 +10,7 @@
        <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/contacts">PHONE BOOK</a>
+                <a class="navbar-brand" href="/">PHONE BOOK</a>
             </div>
         </div>
 </nav> 
@@ -20,7 +20,7 @@
     <div class="row">
         <h1 style="text-align: center">Edit Contact</h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/contacts/<%= contacts._id %>?_method=PUT" method="post">
+            <form action="/<%= contacts._id %>?_method=PUT" method="post">
                 <div class="form-group">
     <input type="text" id="name" name="name" value="<%= contacts.name %>" required><br><br>
                 </div>
@@ -35,7 +35,7 @@
                     <button type="submit" class="btn btn-lg btn-primary btn-block">Update</button>
                 </div>
             </form>
-            <a href="/contacts">Go Back</a>
+            <a href="/">Go Back</a>
         </div>
     </div>
 </div>

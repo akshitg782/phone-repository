@@ -4,16 +4,16 @@ var bodyParser=require("body-parser");
 var methodOverride = require("method-override");
 var mongoose = require('mongoose');
 var contacts=require("./models/mongo");
-var paginate=require("mongoose-paginate");
+
 
 mongoose.connect('mongodb://localhost/contacts', {useNewUrlParser: true});
 
 app.use(methodOverride("_method"));
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 
 
-app.get("/contacts",function(req,res){
+app.get("/",function(req,res){
     
     contacts.find({},function(err,contacts){
         if(err){
@@ -40,29 +40,29 @@ app.get("/contacts",function(req,res){
 
 
 
-app.get("/contacts/new",function(req,res){
+app.get("/new",function(req,res){
     
     res.render("new");
 });
 
 
 
-app.post("/contacts",function(req,res){
+app.post("/",function(req,res){
     
      var name= req.body.name;
      var email =req.body.email;
     var phone = req.body.phone;  
     var newContact={name:name,email:email,phone:phone};
     contacts.create(newContact);
-  res.redirect("/contacts");
+  res.redirect("/");
 });
 
 
-app.get("/contacts/:id/edit",function(req,res){
+app.get("/:id/edit",function(req,res){
    
     contacts.findById(req.params.id,function(err,found){
        if(err){
-           res.redirect("/contacts");
+           res.redirect("/");
        } else{
              res.render("edit",{contacts:found});
 
@@ -71,12 +71,12 @@ app.get("/contacts/:id/edit",function(req,res){
 });
 
 
-app.put("/contacts/:id",function(req,res){
+app.put("/:id",function(req,res){
     contacts.findByIdAndUpdate(req.params.id,req.body,function(err,updateData){
        if(err){
-           res.redirect("/contacts");
+           res.redirect("/");
        } else{
-           res.redirect("/contacts");
+           res.redirect("/");
        }
     });
     
@@ -86,13 +86,13 @@ app.put("/contacts/:id",function(req,res){
 
 
 
-app.get("/contacts/:id",function(req,res){
+app.get("/:id",function(req,res){
    
     contacts.findByIdAndRemove(req.params.id,function(err){
        if(err){
-           res.redirect("/contacts");
+           res.redirect("/");
        } else{
-             res.redirect("/contacts");
+             res.redirect("/");
 
        }
     });
@@ -110,7 +110,7 @@ app.get("/contacts/:id",function(req,res){
 
 
 
-app.listen(process.env.Port||5000/contacts,process.env.IP,function(){
+app.listen(5000,process.env.IP,function(){
 	console.log("running on port 5000");
 });
 
