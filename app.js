@@ -13,9 +13,22 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.set("view engine","ejs");
 schema.plugin(paginate);
 
-/*app.get("/contacts",function(req,res){
+app.get("/contacts",function(req,res){
     
     contacts.find({},function(err,contacts){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("home",{contacts:contacts});
+        }
+    });
+    
+});
+
+
+/*app.get("/contacts",function(req,res){
+    
+    contacts.paginate({},{limit:4,sort:{name: 'asc'}},function(err,contacts){
         if(err){
             console.log(err);
         }else{
@@ -26,17 +39,7 @@ schema.plugin(paginate);
 });*/
 
 
-app.get("/contacts",function(req,res){
-    
-    contacts.paginate({},{limit:4,sort:{name: 'asc'}},function(err,contacts){
-        if(err){
-            console.log(err);
-        }else{
-            res.render("home",{contacts:contacts});
-        }
-    });
-    
-});
+
 app.get("/contacts/new",function(req,res){
     
     res.render("new");
